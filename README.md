@@ -24,7 +24,7 @@ Now most frameworks adapt `CUDNN` as their backends. Without special optimizatio
 ## Data Loader
 The default combination `datasets.ImageFolder` + `data.DataLoader` is not enough for large scale classification. According to my experience, even I switch to Samsung 960 Pro (read 3.5 GB/s, write 2.0 GB/s), whole training pipeline still suffers at disk I/O.
 
-The reason causing is the slow reading of discountiuous small chunks. You should have experienced one or two times, for example, type `ls` command under original ImageNet validation folder. To optimize, we need to compress small JPEG images into a large binary file. TensorFlow has its own `TFRecord` and MXNet uses `recordIO`. Beside these two, there are many other options like `hdf5`, `pth`, `n5`, `lmdb` etc. Here I will choose `lmdb`, because of its super effienceny. 
+The reason causing is the slow reading of discountiuous small chunks. You should have experienced one or two times, for example, type `ls` command under original ImageNet validation folder. To optimize, we need to compress small JPEG images into a large binary file. TensorFlow has its own `TFRecord` and MXNet uses `recordIO`. Beside these two, there are many other options like `hdf5`, `pth`, `n5`, `lmdb` etc. Here I will choose `lmdb`, because of its super efficiency. 
 
 ## Data Parallel (On-going)
 The default data parallel of PyTorch, powerd by `nn.DataParallel` is in-efficienct! 
